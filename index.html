@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Estudos de TI</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Quill CSS -->
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
 </head>
 <body>
@@ -13,44 +12,90 @@
     <h1>Resumos de TI para Concursos</h1>
   </header>
 
-  <main>
-    <section id="disciplinas">
+  <main role="main">
+    <section id="disciplinas" aria-label="Lista de disciplinas de TI">
       <h2>Disciplinas de TI</h2>
       <div class="grid-disciplinas">
-        <button onclick="selecionarDisciplina('Redes')">Redes</button>
-        <button onclick="selecionarDisciplina('Sistemas Operacionais')">Sistemas Operacionais</button>
-        <button onclick="selecionarDisciplina('Governança de TI')">Governança de TI</button>
-        <button onclick="selecionarDisciplina('Engenharia de Software')">Engenharia de Software</button>
-        <button onclick="selecionarDisciplina('Desenvolvimento')">Desenvolvimento</button>
-        <button onclick="selecionarDisciplina('Banco de Dados')">Banco de Dados</button>
-        <button onclick="selecionarDisciplina('Legislação')">Legislação</button>
-        <button onclick="selecionarDisciplina('Ciência de Dados')">Ciência de Dados</button>
-        <button onclick="selecionarDisciplina('Segurança da Informação')">Segurança da Informação</button>
+        <button onclick="selecionarDisciplina('Redes')" title="Selecionar disciplina Redes">Redes</button>
+        <button onclick="selecionarDisciplina('Sistemas Operacionais')" title="Selecionar disciplina Sistemas Operacionais">Sistemas Operacionais</button>
+        <button onclick="selecionarDisciplina('Governança de TI')" title="Selecionar disciplina Governança de TI">Governança de TI</button>
+        <button onclick="selecionarDisciplina('Engenharia de Software')" title="Selecionar disciplina Engenharia de Software">Engenharia de Software</button>
+        <button onclick="selecionarDisciplina('Desenvolvimento')" title="Selecionar disciplina Desenvolvimento">Desenvolvimento</button>
+        <button onclick="selecionarDisciplina('Banco de Dados')" title="Selecionar disciplina Banco de Dados">Banco de Dados</button>
+        <button onclick="selecionarDisciplina('Legislação')" title="Selecionar disciplina Legislação">Legislação</button>
+        <button onclick="selecionarDisciplina('Ciência de Dados')" title="Selecionar disciplina Ciência de Dados">Ciência de Dados</button>
+        <button onclick="selecionarDisciplina('Segurança da Informação')" title="Selecionar disciplina Segurança da Informação">Segurança da Informação</button>
       </div>
     </section>
 
-    <section id="gerenciar-disciplina" style="display: none;">
+    <section id="gerenciar-disciplina" class="escondido" aria-label="Gerenciar temas da disciplina">
       <h2 id="disciplina-titulo"></h2>
-      <button onclick="mostrarFormularioTema()">➕ Adicionar Novo Tema</button>
+      <button onclick="mostrarFormularioTema()" title="Adicionar novo tema">➕ Adicionar Novo Tema</button>
 
-      <div id="formulario-tema" style="margin-top: 20px;"></div>
+      <div id="formulario-tema" class="espacamento" aria-live="polite"></div>
+      <div id="bloco-questoes" class="espacamento" aria-live="polite"></div>
 
-      <!-- ✅ Bloco onde as questões serão mostradas -->
-      <div id="bloco-questoes" style="margin-top: 20px;"></div>
-
-      <!-- Campo de busca de temas (inicialmente escondido) -->
-      <div id="campo-busca" style="display: none; margin-top: 20px;">
-        <input type="text" id="busca-tema" placeholder="Buscar tema..." oninput="filtrarTemas()" style="width: 100%; padding: 10px;" />
-        <div id="resultado-busca" style="margin-top: 10px;"></div>
+      <div id="campo-busca" class="escondido espacamento">
+        <label for="busca-tema" class="visually-hidden">Buscar tema</label>
+        <input
+          type="text"
+          id="busca-tema"
+          placeholder="Buscar tema..."
+          oninput="filtrarTemas()"
+          aria-label="Buscar tema"
+        />
+        <div id="resultado-busca" class="espacamento" aria-live="polite"></div>
       </div>
+
+      <fieldset id="formulario-questao" class="escondido espacamento">
+        <legend>Adicionar Questão</legend>
+
+        <label for="enunciado">Enunciado:</label>
+        <textarea id="enunciado" rows="4" placeholder="Digite o enunciado da questão"></textarea>
+
+        <label for="num-alternativas">Número de Alternativas:</label>
+        <select id="num-alternativas" onchange="gerarCamposAlternativas()">
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <div id="alternativas-container">
+          <label for="alternativaA">Alternativa A:</label>
+          <input type="text" id="alternativaA" placeholder="Alternativa A" />
+
+          <label for="alternativaB">Alternativa B:</label>
+          <input type="text" id="alternativaB" placeholder="Alternativa B" />
+
+          <label for="alternativaC">Alternativa C:</label>
+          <input type="text" id="alternativaC" placeholder="Alternativa C" />
+
+          <label for="alternativaD">Alternativa D:</label>
+          <input type="text" id="alternativaD" placeholder="Alternativa D" />
+        </div>
+
+        <label for="correta">Alternativa Correta:</label>
+        <select id="correta">
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+        </select>
+
+        <label for="comentario">Comentário:</label>
+        <div id="editor-comentario" style="height: 100px;"></div>
+
+        <div class="botoes-questao">
+          <button type="button" onclick="salvarQuestao()">Salvar Questão</button>
+        </div>
+      </fieldset>
     </section>
 
-    <section id="conteudo-estudo" style="margin-top: 30px;"></section>
+    <section id="conteudo-estudo" class="espacamento escondido" aria-label="Conteúdo do Estudo"></section>
   </main>
 
-  <!-- Quill JS -->
   <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
-

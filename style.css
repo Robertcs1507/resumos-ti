@@ -1,97 +1,180 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f4f6f8;
-  }
-  
-  header {
-    background-color: #1976d2;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    font-size: 24px;
-  }
-  
-  h1, h2 {
-    margin-bottom: 15px;
-  }
-  
-  .grid-disciplinas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-  }
-  
-  .grid-disciplinas button {
-    background-color: #1976d2;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .grid-disciplinas button:hover {
-    background-color: #1565c0;
-  }
-  
-  input, textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  button {
-    background-color: #388e3c;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #2e7d32;
-  }
-  
-  fieldset {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px;
-    margin-top: 15px;
-  }
-  
-  ul {
-    padding-left: 20px;
-  }
-  
-  .tema-card {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  .tema-card button {
-    margin-right: 10px;
-  }
-  
-  <style>
-  .tema-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-  }
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f6f8;
+}
 
-  .tema-card button {
-    margin-right: 10px;
-  }
-</style>
+header {
+  background-color: #1976d2;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+h1, h2 {
+  margin-bottom: 15px;
+}
+
+.grid-disciplinas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.grid-disciplinas button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.grid-disciplinas button:hover {
+  background-color: #1565c0;
+}
+
+input, textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2e7d32;
+}
+
+fieldset {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.tema-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+}
+
+.tema-card button {
+  margin-right: 10px;
+  transition: background-color 0.3s ease; /* Adiciona transição */
+}
+
+.tema-card button:hover {
+  opacity: 0.8; /* Adiciona efeito de hover */
+}
+
+.escondido {
+  display: none;
+}
+
+.espacamento {
+  margin-top: 20px;
+}
+
+#conteudo-estudo {
+  margin-top: 30px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.questao-salva {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+}
+
+.questao-salva p {
+  margin: 5px 0;
+}
+
+.questao-salva p strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.questao-salva p em {
+  color: #555;
+  font-style: italic;
+}
+
+.questao-salva .alternativa-correta {
+  font-weight: bold;
+  color: green;
+}
+
+.botoes-questao {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* Estilos adicionais para melhorar o visual */
+#conteudo-estudo {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.bloco-questoes {
+  position: relative;
+}
+
+.botao-adicionar-questao {
+  position: sticky;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  text-align: center;
+  background-color: white;
+}
+
+/* Melhorias nos formulários */
+#formulario-tema input, #formulario-tema textarea, #formulario-tema select,
+#formulario-questao input, #formulario-questao textarea, #formulario-questao select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: calc(100% - 22px); /* Ajuste para padding e borda */
+}
+
+#questoes-salvas div {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+}
